@@ -19,7 +19,6 @@ export const shoppingListSlice = createSlice({
     addItem: (state, action: PayloadAction<ShoppingListItem>) => {
       state.items.push(action.payload);
     },
-    // other reducers
   },
 });
 
