@@ -7,9 +7,11 @@ interface ShoppingListItem {
 }
 interface ShoppingListState {
   items: ShoppingListItem[];
+  total: number;
 }
 const initialState: ShoppingListState = {
   items: [],
+  total: 0,
 };
 
 export const shoppingListSlice = createSlice({
@@ -18,6 +20,7 @@ export const shoppingListSlice = createSlice({
   reducers: {
     addItem: (state, action: PayloadAction<ShoppingListItem>) => {
       state.items.push(action.payload);
+      state.total += 1;
     },
   },
 });
