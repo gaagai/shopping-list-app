@@ -1,9 +1,19 @@
-import axios from "axios";
-import { ShoppingListItem } from "../types";
+// src/services/api.ts
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const apiUrl = process.env.REACT_APP_API_URL;
+interface Category {
+  id: number;
+  name: string;
+}
 
-export const fetchShoppingListItems = async (): Promise<ShoppingListItem[]> => {
-  const response = await axios.get<ShoppingListItem[]>(`${apiUrl}/items`);
-  return response.data;
-};
+export const api = createApi({
+  reducerPath: "api",
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL }),
+  endpoints: (builder) => ({
+    getCategories: builder.query<Category[], void>({
+      query: () => "categories",
+    }),
+  }),
+});
+
+export const { useGetCategoriesQuery } = api;
