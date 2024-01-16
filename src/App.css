@@ -55,3 +55,14 @@ h2 {
 .btn-row {
   margin-bottom: 2em;
 }
+.main-form {
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 1em;
+}
+.confirm-btn {
+  margin: 1em 0;
+}
+.list-title {
+  text-align: center;
+  text-decoration: underline;
+}

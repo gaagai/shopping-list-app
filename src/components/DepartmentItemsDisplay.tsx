@@ -74,7 +74,7 @@ const DepartmentItemsDisplay = () => {
             <ul>
               {data.items.map((item) => (
                 <li key={item.id}>
-                  {item.name} - Quantity: {item.quantity}
+                  {item.name} - {item.quantity}
                 </li>
               ))}
             </ul>

@@ -1,13 +1,19 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useSubmitFormMutation } from "../api/ContactFormApi";
 
 const SummartForm = () => {
   const [formValues, setFormValues] = useState({
     name: "",
     address: "",
-    phoneNumber: "",
+    email: "",
   });
+  const shoppingListItems = useSelector(
+    (state: any) => state.shoppingList.items
+  );
+  const [submitForm] = useSubmitFormMutation();
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues((prevState) => ({
@@ -16,14 +22,30 @@ const SummartForm = () => {
     }));
   };
 
-  const handleConfirmOrder = () => {
-    // Implement logic to confirm the order and send data to the backend
+  const handleConfirmOrder = async () => {
+    try {
+      const formData: any = {
+        FullName: formValues.name,
+        FullAddress: formValues.address,
+        Email: formValues.email,
+        OrderItemsJson: shoppingListItems,
+      };
+
+      await submitForm(formData);
+
+      console.log("Form submitted successfully");
+    } catch (error) {
+      console.error("Form submission error:", error);
+    }
   };
+
+  const isFormIncomplete =
+    formValues.name === "" ||
+    formValues.address === "" ||
+    formValues.email === "";
+
   return (
     <Form className="main-form my-3">
-      {/* Display selected products from the shopping list */}
-      {/* Add a list of selected products here */}
-
       <Form.Group>
         <Form.Label>שם מלא:</Form.Label>
         <Form.Control
@@ -45,16 +67,21 @@ const SummartForm = () => {
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label>טלפון:</Form.Label>
+        <Form.Label>מייל:</Form.Label>
         <Form.Control
           type="text"
-          name="phoneNumber"
-          value={formValues.phoneNumber}
+          name="email"
+          value={formValues.email}
           onChange={handleInputChange}
           className="mb-2"
         />
       </Form.Group>
-      <Button variant="success" onClick={handleConfirmOrder}>
+      <Button
+        className="confirm-btn"
+        variant="success"
+        onClick={handleConfirmOrder}
+        disabled={isFormIncomplete}
+      >
         אשר ההזמנה
       </Button>
     </Form>
