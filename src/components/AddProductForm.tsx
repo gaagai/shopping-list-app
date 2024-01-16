@@ -40,7 +40,7 @@ export const AddProductForm = () => {
     setCategory("");
   };
   return (
-    <Container className="my-5 pb-4 align-items-center border-b">
+    <Container className="my-4 pb-4 align-items-center border-b">
       <Form onSubmit={handleSubmit}>
         <Row className="">
           <Col sm={4}>

@@ -58,13 +58,13 @@ const DepartmentItemsDisplay = () => {
 
   return (
     <Container>
-      {Object.entries(groupedItems).map(([categoryName, data]) => (
-        <Row key={categoryName}>
-          <Col>
-            <h3>
-              {categoryName} (Total Items: {data.total})
-            </h3>{" "}
-            {/* Display total items */}
+      <h2>יש לאסוף מוצרים אלו במחלקות המתאימות</h2>
+      <Row className="flex-container">
+        {Object.entries(groupedItems).map(([categoryName, data]) => (
+          <Col sm={4} className="flex-item" key={categoryName}>
+            <h4>
+              {categoryName} - {data.total} מוצרים
+            </h4>
             <ul>
               {data.items.map((item) => (
                 <li key={item.id}>
@@ -73,8 +73,8 @@ const DepartmentItemsDisplay = () => {
               ))}
             </ul>
           </Col>
-        </Row>
-      ))}
+        ))}
+      </Row>
     </Container>
   );
 };

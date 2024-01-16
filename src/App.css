@@ -34,3 +34,17 @@ ul {
   padding: 0;
   list-style: none;
 }
+.flex-item.col-sm-4 {
+  margin-bottom: 2em;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1em;
+  text-align: center;
+  color: darkturquoise;
+}
+.flex-container.row {
+  justify-content: center;
+  text-align: center;
+}
