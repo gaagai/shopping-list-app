@@ -3,6 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavBarComponent from "../components/NavBarComponent";
 import ProductsCount from "../components/ProductsCount";
 import { AddProductForm } from "../components/AddProductForm";
+import DepartmentItemsDisplay from "../components/DepartmentItemsDisplay";
 
 const ShoppingListScreen = () => {
   return (
@@ -10,6 +11,7 @@ const ShoppingListScreen = () => {
       <NavBarComponent />
       <ProductsCount />
       <AddProductForm />
+      <DepartmentItemsDisplay />
     </>
   );
 };

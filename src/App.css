@@ -23,3 +23,14 @@ nav.navbar.custom-navbar.navbar.navbar-expand.navbar-light {
   justify-content: end;
   margin-top: 1em;
 }
+.border-b {
+  border-bottom: 1px solid lightgrey;
+}
+dl,
+ol,
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
