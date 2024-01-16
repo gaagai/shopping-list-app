@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useSelector } from "react-redux";
+import Button from "react-bootstrap/Button";
 
 interface Category {
   id: number;
@@ -56,6 +57,10 @@ const DepartmentItemsDisplay = () => {
     return acc;
   }, {} as GroupedItems);
 
+  function handleConfirmClick(): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <Container>
       <h2>יש לאסוף מוצרים אלו במחלקות המתאימות</h2>
@@ -74,6 +79,17 @@ const DepartmentItemsDisplay = () => {
             </ul>
           </Col>
         ))}
+      </Row>
+      <Row className="btn-row">
+        <Col className="btn-container">
+          <Button
+            className="main-btn"
+            variant="success"
+            onClick={handleConfirmClick}
+          >
+            סיים הזמנה
+          </Button>
+        </Col>
       </Row>
     </Container>
   );
