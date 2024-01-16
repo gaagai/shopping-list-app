@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 interface Category {
   id: number;
@@ -38,9 +39,9 @@ const DepartmentItemsDisplay = () => {
   const items = useSelector((state: RootState) => state.shoppingList.items);
   const categories = useSelector(
     (state: RootState) => state.categories.categories
-  ); // Access from Redux store
+  );
 
-  // Convert categories array to a map for easy access
+  const navigate = useNavigate();
   const categoryMap = categories
     ? new Map(categories.map((cat: Category) => [cat.id, cat.name]))
     : new Map();
@@ -53,12 +54,12 @@ const DepartmentItemsDisplay = () => {
       acc[categoryName] = { items: [], total: 0 };
     }
     acc[categoryName].items.push(item);
-    acc[categoryName].total += item.quantity || 1; // Increment total by item quantity
+    acc[categoryName].total += item.quantity || 1;
     return acc;
   }, {} as GroupedItems);
 
   function handleConfirmClick(): void {
-    throw new Error("Function not implemented.");
+    navigate("/order-summary");
   }
 
   return (

@@ -8,7 +8,7 @@ import DepartmentItemsDisplay from "../components/DepartmentItemsDisplay";
 const ShoppingListScreen = () => {
   return (
     <>
-      <NavBarComponent />
+      <NavBarComponent title="רשימת קניות" />
       <ProductsCount />
       <AddProductForm />
       <DepartmentItemsDisplay />
